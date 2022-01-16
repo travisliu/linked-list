@@ -1,0 +1,21 @@
+{
+  "name": "linked-list",
+  "version": "1.0.0",
+  "description": "Linked lists implementation in Javascript",
+  "main": "index.js",
+  "author": "Travis Liu",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --collect-coverage --watch spec.js"
+  },
+  "devDependencies": {
+    "bdd-lazy-var": "^2.6.1",
+    "jest": "26.6.3"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "bdd-lazy-var/global"
+    ]
+  },
+  "dependencies": {}
+}
