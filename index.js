@@ -30,7 +30,7 @@ class Iterator {
 
   constructor(node) {
     this.#currentNode = node;
-    this.#hasNext = !!node.next;
+    this.#hasNext = !!node;
   }
 
   get hasNext() { 
@@ -38,7 +38,7 @@ class Iterator {
   }
   
   next() {
-    if (!this.#hasNext) return null;
+    if (!this.#currentNode) return null;
     
     const currentValue = this.#currentNode.value;
     this.#currentNode = this.#currentNode.next;

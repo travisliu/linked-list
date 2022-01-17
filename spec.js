@@ -205,19 +205,32 @@ describe('List', () => {
   })
 
   describe('.generateIterator', () => {
-    subject('iterator', () => $subject.generateIterator())
+    def('iterator', () => $subject.generateIterator())
+
+    describe('when head node is empty', () => {
+      def('headNode', () => createNodeBySize(0))
+
+      it('returns a iterator can not be moved to next', () => {
+        expect($iterator.hasNext).toBeFalsy();
+        expect($iterator.next()).toBeNull();
+      })
+    })
 
     describe('when head node is alone', () => {
       def('headNode', () => createNodeBySize(1))
 
-      its('hasNext', () => is.expected.toBeFalsy())
-      its('next', () => is.expected.toBeNull())
+      it('returns a iterator can be moved to next only once', () => {
+        expect($iterator.hasNext).toBeTruthy();
+        expect($iterator.next()).toBe(1);
+        expect($iterator.hasNext).toBeFalsy();
+        expect($iterator.next()).toBeNull();
+      })
     })
 
     describe('when head node has 3 nodes linked', () => {
       def('headNode', () => createNodeBySize(3))
 
-      it('returns a iterator can be moved to next', () => {
+      it('returns a iterator can be moved to next 3 times', () => {
         expect($iterator.hasNext).toBeTruthy();
         expect($iterator.next()).toBe(1);
         expect($iterator.hasNext).toBeTruthy();
