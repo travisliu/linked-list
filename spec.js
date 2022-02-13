@@ -10,21 +10,21 @@ describe('List', () => {
   describe('.constructor', () => {
     def('headNode', () => createNodeBySize($nodeAmount))
 
-    describe('when head node is null', () => {
+    context('when head node is null', () => {
       def('nodeAmount', () => 0)
 
       its('size', () => is.expected.toBe(0))
       its('tail', () => is.expected.toBeNull())
     })
 
-    describe('when head node is alone', () => {
+    context('when head node is alone', () => {
       def('nodeAmount', () => 1)
 
       its('size', () => is.expected.toBe($nodeAmount))
       its('tail', () => is.expected.toBe($head))
     })
 
-    describe('when head node has 3 nodes linked', () => {
+    context('when head node has 3 nodes linked', () => {
       def('nodeAmount', () => 3)
 
       its('size', () => is.expected.toBe($nodeAmount))
@@ -35,7 +35,7 @@ describe('List', () => {
   describe('.find', () => {
     def('headNode', () => createNodeBySize(6))
 
-    describe('when index is pointed to head', () => {
+    context('when index is pointed to head', () => {
       def('index', () => 0)
 
       it('returns the head node', () => {
@@ -43,7 +43,7 @@ describe('List', () => {
       })
     })
 
-    describe('when index is pointed to tail', () => {
+    context('when index is pointed to tail', () => {
       def('index', () => 5)
 
       it('returns the tail node', () => {
@@ -51,7 +51,7 @@ describe('List', () => {
       })
     })
 
-    describe('when index is pointed to middle node', () => {
+    context('when index is pointed to middle node', () => {
       def('index', () => 3)
 
       it('returns the node be pointed with index', () => {
@@ -67,7 +67,7 @@ describe('List', () => {
       $subject.prepend($newNode);
     })
 
-    describe('when head node is null', () => {
+    context('when head node is null', () => {
       def('headNode', () => null)
 
       its('size', () => is.expected.toBe(1))
@@ -75,7 +75,7 @@ describe('List', () => {
       it(() => is.expected.toHaveProperty('tail', $newNode))
     })
 
-    describe('when head node is alone', () => {
+    context('when head node is alone', () => {
       def('headNode', () => createNodeBySize(1))
 
       its('size', () => is.expected.toBe(2))
@@ -86,7 +86,7 @@ describe('List', () => {
       })
     })
 
-    describe('when head node has 3 nodes linked', () => {
+    context('when head node has 3 nodes linked', () => {
       def('headNode', () => createNodeBySize(3))
 
       its('size', () => is.expected.toBe(4))
@@ -105,7 +105,7 @@ describe('List', () => {
       $subject.append($newNode);
     })
 
-    describe('when head node is null', () => {
+    context('when head node is null', () => {
       def('headNode', () => null)
 
       its('size', () => is.expected.toBe(1))
@@ -113,7 +113,7 @@ describe('List', () => {
       its('tail', () => is.expected.toBe($newNode))
     })
 
-    describe('when head node is alone', () => {
+    context('when head node is alone', () => {
       def('headNode', () => createNodeBySize(1))
 
       its('size', () => is.expected.toBe(2))
@@ -124,7 +124,7 @@ describe('List', () => {
       })
     })
 
-    describe('when head node has 3 nodes linked', () => {
+    context('when head node has 3 nodes linked', () => {
       def('headNode', () => createNodeBySize(3))
 
       its('size', () => is.expected.toBe(4))
@@ -137,7 +137,7 @@ describe('List', () => {
   })
 
   describe('.remove', () => {
-    describe('when head node is alone', () => {
+    context('when head node is alone', () => {
       def('headNode', () => createNodeBySize(1))
 
       beforeEach(() => {
@@ -149,14 +149,14 @@ describe('List', () => {
       its('tail', () => is.expected.toBeNull())
     })
 
-    describe('when head node has 6 nodes linked', () => {
+    context('when head node has 6 nodes linked', () => {
       def('headNode', () => createNodeBySize(6))
 
       beforeEach(() => {
         $subject.remove($index);
       })
 
-      describe('and index is pointed to the head node', () => {
+      context('and index is pointed to the head node', () => {
         def('index', () => 0)
 
         its('size', () => is.expected.toBe(5))
@@ -170,7 +170,7 @@ describe('List', () => {
         })
       })
 
-      describe('and index is pointed the middle node', () => {
+      context('and index is pointed the middle node', () => {
         def('index', () => 3)
 
         its('size', () => is.expected.toBe(5))
@@ -188,7 +188,7 @@ describe('List', () => {
         })
       })
 
-      describe('and index is pointed the tail node', () => {
+      context('and index is pointed the tail node', () => {
         def('index', () => 5)
 
         its('size', () => is.expected.toBe(5))
@@ -207,7 +207,7 @@ describe('List', () => {
   describe('.generateIterator', () => {
     def('iterator', () => $subject.generateIterator())
 
-    describe('when head node is empty', () => {
+    context('when head node is empty', () => {
       def('headNode', () => createNodeBySize(0))
 
       it('returns a iterator can not be moved to next', () => {
@@ -216,7 +216,7 @@ describe('List', () => {
       })
     })
 
-    describe('when head node is alone', () => {
+    context('when head node is alone', () => {
       def('headNode', () => createNodeBySize(1))
 
       it('returns a iterator can be moved to next only once', () => {
@@ -227,7 +227,7 @@ describe('List', () => {
       })
     })
 
-    describe('when head node has 3 nodes linked', () => {
+    context('when head node has 3 nodes linked', () => {
       def('headNode', () => createNodeBySize(3))
 
       it('returns a iterator can be moved to next 3 times', () => {
